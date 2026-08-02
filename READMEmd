@@ -1,0 +1,62 @@
+# Epochs '26 - Assignment 10: AI Application Build
+
+# Student Details
+* Name:Nuha c
+* MUID:nuha-2@mulearn
+
+---
+
+# Project Overview
+This project is an AI-powered web application built for Assignment 10. The main goal was to integrate a free LLM into a functional user interface to solve a practical problem. 
+
+* Chosen Use Case:[e.g., AI Study Assistant / Document Summarizer]
+* AI Platform & Model:[e.g., Google Gemini API - gemini-1.5-flash / Groq API - llama3-8b]
+* Tech Stack:*Python, Streamlit (or Flask/Gadio), HTML/CSS
+
+---
+
+# Key Observations & Learnings
+
+* Prompt Behavior: Initially, the model gave very long, generic answers. I had to tweak the system prompt to enforce strict constraints (like word limits and specific formatting) to make the output actually useful.
+* Latency: The response time varies depending on the model. [e.g., Groq was incredibly fast with minimal delay, while Gemini took an extra second but gave more detailed formatting.]
+* UI/UX: Streamlit made it very easy to build the frontend quickly, allowing me to focus more on handling the API requests and managing the session state.
+
+---
+
+# Challenges Faced 
+
+1. API Key Security: I had to make sure the API keys weren't hardcoded into the script to avoid security flags on GitHub. Resolved this by using the `python-dotenv` library to load keys from a local `.env` file.
+2. Handling Empty Inputs: If a user clicked submit without typing anything, the API threw an error. I fixed this by adding basic validation checks on the input fields before triggering the model call.
+3. Response Formatting:Sometimes the LLM returned raw markdown code blocks inside the text which looked messy on the UI. I had to adjust the system instructions to control the output layout cleanly.
+
+---
+
+# Future Improvements
+* Chat Memory: Currently, the app treats every input as a fresh request. I want to implement session state memory so users can have a continuous conversation.
+* File Uploads (RAG): Planning to add a PDF parser so users can upload their own notes or college syllabus for the AI to reference directly.
+* Cloud Deployment:I want to deploy the app permanently on Streamlit Community Cloud or Render so anyone can test it via a live link.
+
+---
+
+# Proof of Implementation
+
+### Live Link
+* **Deployment URL:** [Insert link if hosted, otherwise delete this line]
+
+### Application Screenshots
+*Replace these paths with your actual screenshot images stored in the repo*
+
+**1. Main Application Interface:**
+![Application UI](screenshots/interface.png)
+
+**2. Testing Input & AI Output:**
+![AI Response Test](screenshots/output.png)
+
+---
+
+# How to Setup and Run Locally
+
+1. **Clone the repo:**
+   ```bash
+   git clone <your-repository-url>
+   cd <repository-folder-name>
