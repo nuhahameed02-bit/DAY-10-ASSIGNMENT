@@ -1,62 +1,58 @@
 # Epochs '26 - Assignment 10: AI Application Build
 
+# AI Study Assistant
+
 # Student Details
 * Name:Nuha c
 * MUID:nuha-2@mulearn
 
----
-
-# Project Overview
-This project is an AI-powered web application built for Assignment 10. The main goal was to integrate a free LLM into a functional user interface to solve a practical problem. 
-
-* Chosen Use Case:[e.g., AI Study Assistant / Document Summarizer]
-* AI Platform & Model:[e.g., Google Gemini API - gemini-1.5-flash / Groq API - llama3-8b]
-* Tech Stack:*Python, Streamlit (or Flask/Gadio), HTML/CSS
+# AI Study Assistant
 
 ---
 
-# Key Observations & Learnings
-
-* Prompt Behavior: Initially, the model gave very long, generic answers. I had to tweak the system prompt to enforce strict constraints (like word limits and specific formatting) to make the output actually useful.
-* Latency: The response time varies depending on the model. [e.g., Groq was incredibly fast with minimal delay, while Gemini took an extra second but gave more detailed formatting.]
-* UI/UX: Streamlit made it very easy to build the frontend quickly, allowing me to focus more on handling the API requests and managing the session state.
+## Proof of Implementation
+* **Live Deployment Link:** [https://day-10-assignment-ewwdhwyqeja65ydm4jbyyb.streamlit.app/](https://day-10-assignment-ewwdhwyqeja65ydm4jbyyb.streamlit.app/)
 
 ---
 
-# Challenges Faced 
-
-1. API Key Security: I had to make sure the API keys weren't hardcoded into the script to avoid security flags on GitHub. Resolved this by using the `python-dotenv` library to load keys from a local `.env` file.
-2. Handling Empty Inputs: If a user clicked submit without typing anything, the API threw an error. I fixed this by adding basic validation checks on the input fields before triggering the model call.
-3. Response Formatting:Sometimes the LLM returned raw markdown code blocks inside the text which looked messy on the UI. I had to adjust the system instructions to control the output layout cleanly.
+## Project Overview
+This project is a simple web app built to help students study more efficiently. When you type in any topic you're trying to learn (like "photosynthesis"), the app generates organized study notes with clear definitions, key concepts, and bullet points.
 
 ---
 
-# Future Improvements
-* Chat Memory: Currently, the app treats every input as a fresh request. I want to implement session state memory so users can have a continuous conversation.
-* File Uploads (RAG): Planning to add a PDF parser so users can upload their own notes or college syllabus for the AI to reference directly.
-* Cloud Deployment:I want to deploy the app permanently on Streamlit Community Cloud or Render so anyone can test it via a live link.
+## Chosen Use Case
+**AI Study Assistant / Note Generator**  
+Turning textbook chapters or complex subjects into quick revision notes takes a lot of time. This app automates that breakdown so students can review key points fast during exam prep.
 
 ---
 
-# Proof of Implementation
-
-### Live Link
-* **Deployment URL:** [Insert link if hosted, otherwise delete this line]
-
-### Application Screenshots
-*Replace these paths with your actual screenshot images stored in the repo*
-
-**1. Main Application Interface:**
-![Application UI](screenshots/interface.png)
-
-**2. Testing Input & AI Output:**
-![AI Response Test](screenshots/output.png)
+## AI Platform & Model Used
+* **Frontend:** Streamlit  
+* **API Provider:** Groq Cloud API  
+* **LLM Model:** `llama-3.1-8b-instant`  
+* **Python Libraries:** `streamlit`, `python-dotenv`, `groq`
 
 ---
 
-# How to Setup and Run Locally
+## Key Observations
+* **Speed:** The `llama-3.1-8b-instant` model on Groq is really fast. The study notes generate almost instantly without long waiting times.
+* **Prompting:** Prompt structure mattered a lot. Without clear instructions on output formatting, the AI response was plain text. Telling it to use Markdown gave consistent headers, bold terms, and bullet points.
 
-1. **Clone the repo:**
-   ```bash
-   git clone <your-repository-url>
-   cd <repository-folder-name>
+---
+
+## Challenges Faced
+1. **API Key Management:** Learning how to hide the `.env` file locally with `.gitignore` so the Groq key wasn't publicly exposed on GitHub, and setting up Streamlit Secrets for cloud deployment.
+2. **Missing Dependencies:** The app threw a `ModuleNotFoundError` on Streamlit Cloud initially because `python-dotenv` wasn't added to `requirements.txt`. Adding it fixed the deployment.
+3. **File Directory Setup:** Resolving minor tracking issues in Git caused by files sitting in different parent/child folders.
+
+---
+
+## Future Improvements
+* Allow users to upload PDFs or lecture slides so notes are generated directly from custom class material.
+* Add a button to download the generated notes as a PDF or Markdown file.
+* Add a flashcard generator feature for self-testing.
+
+---
+
+
+
